@@ -1,10 +1,11 @@
-import React from 'react';
+import React from "react";
 
-
-function Card() {
+function Card(props) {
   return (
-    <div className="Card">
-      Team Builder Card
+    <div>
+      <h4>{props.name}</h4>
+      <p>{props.email}</p>
+      <p>{props.role}</p>
     </div>
   );
 }
