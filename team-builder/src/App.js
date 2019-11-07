@@ -1,24 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+
+import "./App.css";
+
+import Card from "./Components/Card";
+import List from "./Components/List";
+import Form from "./Components/Form";
 
 function App() {
+  const [team, setTeam] = useState([
+    { name: "Anna", email: "anna@morris.com", role: "React Developer" }
+  ]);
+
+  useEffect(() => {
+    console.log(team);
+  }, [team]);
+
+  const submitHandler = newMember => {
+    setTeam([...team, newMember]);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      Team Builder App
+      <Form submitHandler={submitHandler}></Form>
+      <List team={team}></List>
+      <Card></Card>
     </div>
   );
 }
